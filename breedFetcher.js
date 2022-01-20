@@ -6,16 +6,17 @@ const fetchBreedDescription = function(breed, callback) {
 
   request(URL, (error, response, body) => {
     if (error === null) {
-      console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+      // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
       const result = JSON.parse(body);
       if (result.length === 0) {
-        console.log('invalid search word');
+        // console.log('invalid search word');
+        callback('invalid search word');
       } else {
         for (let i in result) {
           if (result[i].name !== undefined) {
             // console.log(`result #${i} name:`, result[i].name); // Print the HTML for the Google homepage.
-            // console.log('description:', result[i].description); // Print the HTML for the Google homepage.
-            callback(null, result[i].name, result[i].description);
+            // console.log(result[i].description); // Print the HTML for the Google homepage.
+            callback(error, result[i].description);
           }
         }
       }

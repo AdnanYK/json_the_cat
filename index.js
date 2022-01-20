@@ -8,6 +8,6 @@ fetchBreedDescription(breed, (error, name, description) => {
     console.log('Error fetch details:', error);
   } else {
     console.log('name: ', name);
-    console.log('description:', description);
+    console.log(description);
   }
 });
